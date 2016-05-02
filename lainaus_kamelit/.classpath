@@ -13,7 +13,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/Raikka/Documents/GitHub/cokviet/WebContent/WEB-INF/lib/jstl-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Raikka/Documents/GitHub/cokviet/WebContent/WEB-INF/lib/mariadb-java-client-1.1.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
