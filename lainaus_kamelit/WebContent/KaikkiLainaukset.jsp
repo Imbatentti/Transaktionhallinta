@@ -6,6 +6,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>kaikki lainaukset</title>
+<style>
+table {
+	border-collapse: collapse;
+}
+
+table, td, th {
+	border: 1px solid black;
+}
+
+</style>
 </head>
 <body>
 <h1>KAIKKI LAINAUKSET</h1>

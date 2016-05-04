@@ -19,11 +19,12 @@ public class Lainaus {
 		lainaaja = null;
 		lista = null;
 	}
-	public Lainaus(int numero, Date LainausPvm, Asiakas lainaaja)
+	public Lainaus(int numero, Date LainausPvm, Asiakas lainaaja, ArrayList<NiteenLainaus> lista)
 	{
 		this.setNumero(numero);
 		this.setLainaaja(lainaaja);
 		this.setLainausPvm(LainausPvm);
+		
 	}
 	public Lainaus(int numero, Date LainausPvm)
 	{
@@ -83,6 +84,7 @@ public class Lainaus {
 	public ArrayList<NiteenLainaus> getLista() {
 		return lista;
 	}
+	
 	public String toString()
 	{
 		SimpleDateFormat f = new SimpleDateFormat("dd.MM.yyyy");
