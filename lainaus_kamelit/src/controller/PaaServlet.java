@@ -23,12 +23,38 @@ public class PaaServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			request.setAttribute("lainauslista", LainausDAO.haeKaikkiLainaukset());
-		} catch (SQLException e) {
-			e.printStackTrace();
+		
+		if(request.getParameter("action")!= null && request.getParameter("action").equals("kaikki")) {					
+			try {
+				request.setAttribute("lainauslista", LainausDAO.haeKaikkiLainaukset());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			request.getRequestDispatcher("KaikkiLainaukset.jsp").forward(request, response);
+			
+			
+		/*}else if(request.getParameter("action")!= null && request.getParameter("action").equals("yksi")) {
+			
+			String numero = request.getParameter("numero"); // tällä se numero sinne daoo?
+			
+			try {
+				request.setAttribute("lainaus", LainausDAO.haeYksiLainaus());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.getRequestDispatcher("YksiLainaus.jsp").forward(request, response);
+			
+			*/
+		}else {
+			try {
+				request.setAttribute("numerot", LainausDAO.haeNumerot());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.getRequestDispatcher("etusivu.jsp").forward(request, response);
 		}
-		request.getRequestDispatcher("KaikkiLainaukset.jsp").forward(request, response);
 	}
 
 
