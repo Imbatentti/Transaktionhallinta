@@ -98,29 +98,31 @@ public class LainausDAO {
 			
 			lainaukset.add(lainaus);	
 		}
-
+		suljeYhteys();
 		return lainaukset;
 
 	}
 
-/*	public static Object haeYksiLainaus() throws SQLException { // Täältä puuttuu jotakin
-		
+	public static List<Lainaus> haeYksiLainaus(int numero) throws SQLException { 
+		System.out.println("yksilainausdao"+numero);
 		Connection yhteys = avaaYhteys();
+		List<Lainaus> lainaukset = new ArrayList<Lainaus>();
 		String sql = "SELECT Lainaus.numero, Lainaus.lainauspvm, "
 				+ "Asiakas.asiakasnumero, Asiakas.etunimi, Asiakas.sukunimi, Asiakas.osoite, "
 				+ "PostinumeroAlue.postinumero, PostinumeroAlue.postitmp, "
 				+ "Kirja.isbn, Kirja.nimi, Kirja.kirjoittaja, Kirja.painos, Kirja.kustantaja, "
 				+ "Nide.nro, "
 				+ "Niteenlainaus.palautuspvm "
-				+ "FROM Lainaus !!!WHERE lainausnro =(?)!!! " // Tseg dät out
+				+ "FROM Lainaus "
 				+ "JOIN Asiakas ON Asiakas.asiakasnumero = Lainaus.numero "
 				+ "JOIN PostinumeroAlue ON PostinumeroAlue.postinumero= Asiakas.postinro "
 				+ "JOIN Niteenlainaus ON Lainaus.numero = Niteenlainaus.lainausnumero "
 				+ "JOIN Nide ON Nide.nro = Niteenlainaus.nidenro "
-				+ "JOIN Kirja ON Kirja.isbn = Nide.nideisbn;";
+				+ "JOIN Kirja ON Kirja.isbn = Nide.nideisbn WHERE Lainaus.numero ='"+numero+"';";
 		Statement haku = yhteys.createStatement();
 		ResultSet tulokset = haku.executeQuery(sql);
 		while (tulokset.next()){
+			System.out.println("asd"+sql);
 			int lainausNumero = tulokset.getInt("numero");
 			Date lainausPvm = tulokset.getDate("lainauspvm");
 			int asiakasnumero = tulokset.getInt("asiakasnumero");
@@ -146,14 +148,28 @@ public class LainausDAO {
 			PostinumeroAlue postinumeroalue = new PostinumeroAlue(postinro, postitmp);
 			Asiakas asiakas = new Asiakas(asiakasnumero, etunimi, sukunimi, osoite, postinumeroalue);
 			Lainaus yksilainaus = new Lainaus(lainausNumero, lainausPvm, asiakas, lista);
-							
+			
+			lainaukset.add(yksilainaus);				
 		}
-		return yksilainaus; // MITÄ VITTUA		
+		suljeYhteys();
+		return lainaukset; 		
 	}
-	*/
+	
 
-	public static Object haeNumerot() throws SQLException {	
-
-		return null;
+	public static List<Lainaus> haeLainausNumerot() throws SQLException {	
+		Connection yhteys = avaaYhteys();
+		List<Lainaus> lainausnumerot = new ArrayList<Lainaus>();
+		String sql = "SELECT numero, lainauspvm FROM Lainaus";
+		Statement haku = yhteys.createStatement();
+		ResultSet tulokset = haku.executeQuery(sql);
+		while (tulokset.next()){
+			int lainausNumero = tulokset.getInt("numero");
+			Date lainausPvm = tulokset.getDate("lainauspvm");
+			
+			Lainaus lainaus = new Lainaus(lainausNumero,lainausPvm,null,null);
+			lainausnumerot.add(lainaus);
+		}
+		suljeYhteys();
+		return lainausnumerot;
 	}
 }

@@ -8,13 +8,15 @@
 <title>Tilaus</title>
 </head>
 <body>
-<form action="NiteenLainausOhjelma" method="get">
-<h1> LAINAUS</h1>
-<p>LAINAUSNUMERO: <c:out value="${lainaus.numero}"/>&nbsp;&nbsp;&nbsp;
+<c:forEach items="${lainauslista}" var="lainaus">
+<h1>LAINAUS</h1>
+<p>LAINAUSNUMERO: 
+<c:out value="${lainaus.numero}"/>&nbsp;&nbsp;&nbsp;
 <c:out value="${lainaus.lainausPvm}"/>
 </p>
 <div>
-Lainaaja: <c:out value="${lainaus.lainaaja.numero}"/> 
+Lainaaja: 
+<c:out value="${lainaus.lainaaja.numero}"/> 
 <c:out value="${lainaus.lainaaja.etunimi}"/>&nbsp;
 <c:out value="${lainaus.lainaaja.sukunimi}"/> <br />
 <c:out  value="${lainaus.lainaaja.osoite}"/><br />
@@ -55,6 +57,6 @@ Lainaaja: <c:out value="${lainaus.lainaaja.numero}"/>
 	</tr>
 </c:forEach>
 </table>
-</form>
+</c:forEach>
 </body>
 </html>

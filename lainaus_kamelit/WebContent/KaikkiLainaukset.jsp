@@ -21,10 +21,13 @@ table, td, th {
 <h1>KAIKKI LAINAUKSET</h1>
 <c:forEach items="${lainauslista}" var="lainaus" >
 <div>
-<p>LAINAUSNUMERO: <c:out value="${lainaus.numero}"/>&nbsp;&nbsp;&nbsp; <c:out value="${lainaus.lainausPvm}"/>
+<p>LAINAUSNUMERO: 
+<c:out value="${lainaus.numero}"/>&nbsp;&nbsp;&nbsp; 
+<c:out value="${lainaus.lainausPvm}"/>
 </p>
 <div>
-Lainaaja: <c:out value="${lainaus.lainaaja.numero}"/> 
+Lainaaja: 
+<c:out value="${lainaus.lainaaja.numero}"/> 
 <c:out value="${lainaus.lainaaja.etunimi}"/>&nbsp;
 <c:out value="${lainaus.lainaaja.sukunimi}"/> <br />
 <c:out  value="${lainaus.lainaaja.osoite}"/><br />
